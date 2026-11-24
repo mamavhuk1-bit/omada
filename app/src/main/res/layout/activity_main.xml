@@ -7,18 +7,19 @@
     android:orientation="vertical"
     android:background="#0F172A">
 
+    <!-- Top App Bar -->
     <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="58dp"
         android:background="#006A5B"
         android:gravity="center_vertical"
-        android:paddingHorizontal="16dp"
+        android:paddingHorizontal="14dp"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/ic_launcher_omada" />
 
         <TextView
@@ -26,61 +27,63 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginStart="12dp"
-            android:text="OMADA ER605"
+            android:layout_marginStart="10dp"
+            android:text="OMADA ER605 PRO"
             android:textColor="#FFFFFF"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnTheme"
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
+            android:layout_height="34dp"
             android:text="Theme: Teal"
-            android:textSize="11sp"
+            android:textSize="10sp"
             android:textColor="#FFFFFF"
             android:backgroundTint="#1E293B" />
 
         <Button
             android:id="@+id/btnToggleWeb"
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
+            android:layout_height="34dp"
             android:layout_marginStart="6dp"
             android:text="Login Web"
-            android:textSize="11sp"
+            android:textSize="10sp"
             android:textColor="#FFFFFF"
             android:backgroundTint="#0F172A" />
     </LinearLayout>
 
+    <!-- IP Bar -->
     <LinearLayout
         android:id="@+id/ipBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:padding="8dp"
         android:orientation="horizontal"
         android:background="#1E293B">
 
         <EditText
             android:id="@+id/etRouterIp"
             android:layout_width="0dp"
-            android:layout_height="42dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
-            android:hint="Router IP (e.g. 192.168.0.1)"
+            android:hint="http://192.168.0.1"
             android:text="http://192.168.0.1"
             android:textColor="#FFFFFF"
             android:textColorHint="#94A3B8"
             android:paddingHorizontal="12dp"
             android:background="#0F172A"
-            android:textSize="14sp"
+            android:textSize="13sp"
             android:singleLine="true" />
 
         <Button
             android:id="@+id/btnConnect"
             android:layout_width="wrap_content"
-            android:layout_height="42dp"
+            android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:text="CONNECT"
             android:textStyle="bold"
+            android:textSize="12sp"
             android:backgroundTint="#00A88F"
             android:textColor="#FFFFFF" />
     </LinearLayout>
@@ -97,22 +100,42 @@
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="14dp">
+                android:padding="12dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tvSyncStatus"
+                    <!-- Sync Status & Quick Actions -->
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Status: Waiting for Login..."
-                        android:textColor="#38BDF8"
-                        android:textSize="13sp"
-                        android:layout_marginBottom="12dp" />
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="10dp">
 
+                        <TextView
+                            android:id="@+id/tvSyncStatus"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="● Waiting for Router Login..."
+                            android:textColor="#38BDF8"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/btnFetchTraffic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:text="SYNC TRAFFIC"
+                            android:textSize="10sp"
+                            android:backgroundTint="#0284C7"
+                            android:textColor="#FFFFFF" />
+                    </LinearLayout>
+
+                    <!-- CARD 1: CPU & MEMORY WITH LIVE GRAPH -->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardResource"
                         android:layout_width="match_parent"
@@ -125,21 +148,21 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:padding="16dp">
+                            android:padding="14dp">
 
                             <TextView
                                 android:id="@+id/lblResource"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="SYSTEM RESOURCES"
+                                android:text="CPU &amp; MEMORY UTILIZATION (LIVE GRAPH)"
                                 android:textColor="#00A88F"
                                 android:textStyle="bold"
-                                android:textSize="12sp" />
+                                android:textSize="11sp" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="12dp"
+                                android:layout_marginTop="8dp"
                                 android:orientation="horizontal">
 
                                 <LinearLayout
@@ -151,17 +174,16 @@
                                         android:id="@+id/tvCpuVal"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="--%"
-                                        android:textSize="28sp"
+                                        android:text="0%"
+                                        android:textSize="26sp"
                                         android:textStyle="bold"
-                                        android:textColor="#FFFFFF" />
+                                        android:textColor="#00FF41" />
                                     <TextView
-                                        android:id="@+id/lblCpu"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="CPU Load (4-Core)"
+                                        android:text="■ CPU Load (4-Core)"
                                         android:textColor="#94A3B8"
-                                        android:textSize="12sp" />
+                                        android:textSize="11sp" />
                                 </LinearLayout>
 
                                 <LinearLayout
@@ -173,22 +195,120 @@
                                         android:id="@+id/tvMemVal"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="--%"
-                                        android:textSize="28sp"
+                                        android:text="0%"
+                                        android:textSize="26sp"
                                         android:textStyle="bold"
-                                        android:textColor="#FFFFFF" />
+                                        android:textColor="#38BDF8" />
                                     <TextView
-                                        android:id="@+id/lblMem"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Memory Usage"
+                                        android:text="■ Memory RAM Usage"
                                         android:textColor="#94A3B8"
-                                        android:textSize="12sp" />
+                                        android:textSize="11sp" />
                                 </LinearLayout>
                             </LinearLayout>
+
+                            <com.omada.pro.LiveGraphView
+                                android:id="@+id/graphCpuMem"
+                                android:layout_width="match_parent"
+                                android:layout_height="95dp"
+                                android:layout_marginTop="10dp" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
+                    <!-- CARD 2: TRAFFIC GRAPH & TOTAL DATA USAGE -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardTraffic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        app:cardCornerRadius="14dp"
+                        app:cardBackgroundColor="#1E293B">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="14dp">
+
+                            <TextView
+                                android:id="@+id/lblTraffic"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="LIVE TRAFFIC &amp; TOTAL DATA USAGE"
+                                android:textColor="#00A88F"
+                                android:textStyle="bold"
+                                android:textSize="11sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+                                    <TextView
+                                        android:id="@+id/tvDownSpeed"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="↓ 0.0 KB/s"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#10B981" />
+                                    <TextView
+                                        android:id="@+id/tvTotalRx"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Total Download: --"
+                                        android:textColor="#94A3B8"
+                                        android:textSize="11sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+                                    <TextView
+                                        android:id="@+id/tvUpSpeed"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="↑ 0.0 KB/s"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#F59E0B" />
+                                    <TextView
+                                        android:id="@+id/tvTotalTx"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Total Upload: --"
+                                        android:textColor="#94A3B8"
+                                        android:textSize="11sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <com.omada.pro.LiveGraphView
+                                android:id="@+id/graphTraffic"
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:layout_marginTop="10dp" />
+
+                            <TextView
+                                android:id="@+id/tvTrafficDetails"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="Tap 'SYNC TRAFFIC' to pull exact WAN packet/byte counters."
+                                android:textColor="#CBD5E1"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- CARD 3: DUAL-WAN INTERFACES -->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardWan"
                         android:layout_width="match_parent"
@@ -201,25 +321,26 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:padding="16dp">
+                            android:padding="14dp">
 
                             <TextView
                                 android:id="@+id/lblWan"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="DUAL-WAN INTERFACES"
+                                android:text="DUAL-WAN GATEWAY INTERFACES"
                                 android:textColor="#00A88F"
                                 android:textStyle="bold"
-                                android:textSize="12sp" />
+                                android:textSize="11sp" />
 
                             <TextView
                                 android:id="@+id/tvWan1Info"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:text="WAN1: Waiting for data..."
+                                android:layout_marginTop="8dp"
+                                android:text="WAN1: Waiting..."
                                 android:textColor="#FFFFFF"
-                                android:textSize="14sp" />
+                                android:lineSpacingExtra="3dp"
+                                android:textSize="13sp" />
 
                             <View
                                 android:layout_width="match_parent"
@@ -231,17 +352,19 @@
                                 android:id="@+id/tvWan2Info"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="WAN/LAN2: Waiting for data..."
+                                android:text="WAN/LAN2: Waiting..."
                                 android:textColor="#FFFFFF"
-                                android:textSize="14sp" />
+                                android:lineSpacingExtra="3dp"
+                                android:textSize="13sp" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
+                    <!-- CARD 4: HARDWARE, FIRMWARE & UPTIME -->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardDevice"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginBottom="12dp"
                         app:cardCornerRadius="14dp"
                         app:cardBackgroundColor="#1E293B">
 
@@ -249,28 +372,68 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:padding="16dp">
+                            android:padding="14dp">
 
                             <TextView
                                 android:id="@+id/lblDevice"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="HARDWARE &amp; UPTIME"
+                                android:text="SYSTEM &amp; HARDWARE DETAILS"
                                 android:textColor="#00A88F"
                                 android:textStyle="bold"
-                                android:textSize="12sp" />
+                                android:textSize="11sp" />
 
                             <TextView
                                 android:id="@+id/tvDeviceInfo"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:text="Model: ER605&#10;Firmware: --&#10;Running Time: --"
+                                android:layout_marginTop="8dp"
+                                android:text="Hardware: ER605 v2.30&#10;Firmware: --&#10;System Time: --&#10;Running Time: --"
                                 android:textColor="#E2E8F0"
                                 android:lineSpacingExtra="4dp"
-                                android:textSize="14sp" />
+                                android:textSize="13sp" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
+
+                    <!-- CARD 5: QUICK ROUTER CONTROLS -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="20dp">
+
+                        <Button
+                            android:id="@+id/btnSystemStatus"
+                            android:layout_width="0dp"
+                            android:layout_height="42dp"
+                            android:layout_weight="1"
+                            android:text="System Status"
+                            android:textSize="11sp"
+                            android:backgroundTint="#006A5B"
+                            android:textColor="#FFFFFF" />
+
+                        <Button
+                            android:id="@+id/btnPortStatus"
+                            android:layout_width="0dp"
+                            android:layout_height="42dp"
+                            android:layout_weight="1"
+                            android:layout_marginStart="6dp"
+                            android:text="Port Status"
+                            android:textSize="11sp"
+                            android:backgroundTint="#334155"
+                            android:textColor="#FFFFFF" />
+
+                        <Button
+                            android:id="@+id/btnReboot"
+                            android:layout_width="0dp"
+                            android:layout_height="42dp"
+                            android:layout_weight="1"
+                            android:layout_marginStart="6dp"
+                            android:text="Reboot"
+                            android:textSize="11sp"
+                            android:backgroundTint="#DC2626"
+                            android:textColor="#FFFFFF" />
+                    </LinearLayout>
 
                 </LinearLayout>
             </ScrollView>
