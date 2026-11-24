@@ -5,7 +5,6 @@ def create_file(path, content):
     with open(path, "w", encoding="utf-8") as f:
         f.write(content.strip() + "\n")
 
-# 1. GitHub Actions Workflow
 workflow_yml = """
 name: Build Omada Android APK
 
@@ -36,7 +35,6 @@ jobs:
 """
 create_file(".github/workflows/build.yml", workflow_yml)
 
-# 2. Gradle Files
 settings_gradle = """
 pluginManagement {
     repositories {
@@ -108,7 +106,6 @@ dependencies {
 """
 create_file("app/build.gradle", app_build_gradle)
 
-# 3. AndroidManifest.xml
 manifest_xml = """
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
@@ -137,7 +134,6 @@ manifest_xml = """
 """
 create_file("app/src/main/AndroidManifest.xml", manifest_xml)
 
-# 4. Custom Vector App Logo
 logo_xml = """
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
@@ -157,7 +153,6 @@ logo_xml = """
 """
 create_file("app/src/main/res/drawable/ic_launcher_omada.xml", logo_xml)
 
-# 5. Main Layout
 activity_main_xml = """
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -448,7 +443,6 @@ activity_main_xml = """
 """
 create_file("app/src/main/res/layout/activity_main.xml", activity_main_xml)
 
-# 6. MainActivity.java
 main_activity_java = """
 package com.omada.pro;
 
